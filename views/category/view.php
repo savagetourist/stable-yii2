@@ -63,7 +63,7 @@ use yii\helpers\Html;
 									<div class="productinfo text-center">
                                         <?= Html::img("@web/images/products/{$product->img}", ['alt' => $product->name]) ?>
 										<h2>$<?= $product->price ?></h2>
-										<p><?= $product->name ?></p>
+										<p><a href="<?= \yii\helpers\Url::to(['product/view', 'id' => $product->id]) ?>"><?= $product->name ?></a></p>
 										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 									<!-- <div class="product-overlay">
@@ -94,15 +94,21 @@ use yii\helpers\Html;
 							<?php endif?>
                         <?php endforeach; ?>
 						<div class="clearfix"></div>
+						<?php
+						echo \yii\widgets\LinkPager::widget([
+							'pagination' => $pages,
+						]);
+						?>
                         <?php else: ?>
                             <h3>Здесь товаров пока что нет</h3>
-						<?php endif; ?>						
-						<ul class="pagination">
+						<?php endif; ?>		
+
+						<!-- <ul class="pagination">
 							<li class="active"><a href="">1</a></li>
 							<li><a href="">2</a></li>
 							<li><a href="">3</a></li>
 							<li><a href="">&raquo;</a></li>
-						</ul>
+						</ul> -->
 					</div><!--features_items-->
 				</div>
 			</div>
